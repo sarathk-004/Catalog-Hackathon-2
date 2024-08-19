@@ -1,10 +1,8 @@
 from tabulate import tabulate
-
 def crop_selection():
     soil_type = input("Enter soil type (sandy, clay, loamy): ").lower()
     climate = input("Enter climate (tropical, temperate, arid): ").lower()
     season = input("Enter season (summer, winter, monsoon): ").lower()
-
     recommendations = []
 
     if soil_type == "loamy" and climate == "tropical" and season == "monsoon":
@@ -27,14 +25,15 @@ def crop_selection():
         else:
             recommendations.append(["Consider mixed farming for sustainability", "Varies", "Varies"])
 
+    
     headers = ["Crop", "Planting Time", "Expected Yield"]
     print(tabulate(recommendations, headers, tablefmt="grid"))
     print()
 
+
 def soil_management():
     soil_ph = float(input("Enter soil pH level: "))
     nutrient_level = input("Enter nutrient level (high, medium, low): ").lower()
-
     recommendations = []
 
     if soil_ph < 5.5:
@@ -44,14 +43,17 @@ def soil_management():
     else:
         recommendations.append(["pH level is optimal", "No action needed"])
 
+    
     if nutrient_level == "low":
         recommendations.append(["Use organic compost or NPK fertilizers", "Monthly"])
     elif nutrient_level == "medium":
         recommendations.append(["Maintain with balanced fertilizers", "As needed"])
-
+    
     headers = ["Recommendation", "Timeframe"]
     print(tabulate(recommendations, headers, tablefmt="grid"))
     print()
+
+
 
 def disease_identification():
     crops = ["1. Wheat", "2. Tomato", "3. Rice", "4. Corn"]
@@ -60,10 +62,8 @@ def disease_identification():
         print(crop)
 
     choice = int(input("Enter the number corresponding to the crop: "))
-
     crop_type = crops[choice - 1].split(". ")[1].lower()
     symptoms = input("Enter observed symptoms: ").lower()
-
     diagnosis = []
 
     if crop_type == "wheat" and "yellow spots" in symptoms:
@@ -71,7 +71,6 @@ def disease_identification():
     elif crop_type == "tomato" and "wilting" in symptoms:
         diagnosis.append(["Fusarium Wilt", "Crop rotation, soil solarization"])
     else:
-        # Collect more details to provide a better recommendation
         print("No exact match found. Let's gather more details.")
         spread_rate = input("How fast is the disease spreading? (fast, slow): ").lower()
         affected_parts = input("Which parts are affected? (leaves, stem, roots, all): ").lower()
